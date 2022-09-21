@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,9 +12,17 @@ public class Main {
         personList.add(new Person("Olya", "Vaselkova Nekifirova Nebrezko Nekrasova", 24));
 
         System.out.println(personList);
-        Collections.sort(personList, new PersonComparator());
+        personList.sort(new PersonComparator());
         Collections.reverse(personList);
         System.out.println(personList);
 
+        Predicate<Person> predicate = Main::test;
+        personList.removeIf(predicate);
+    }
+
+
+
+    private static boolean test(Person personList) {
+        return personList.getAge() < 18;
     }
 }
