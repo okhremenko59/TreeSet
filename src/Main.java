@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,5 +28,13 @@ public class Main {
         Collections.reverse(personList);
         System.out.println(personList);
 
+        Predicate<Person> predicate = Main::test;
+        personList.removeIf(predicate);
+
+        System.out.println(personList);
+    }
+
+    private static boolean test(Person personList) {
+        return personList.getAge() < 18;
     }
 }
