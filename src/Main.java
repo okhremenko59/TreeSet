@@ -28,13 +28,8 @@ public class Main {
         Collections.reverse(personList);
         System.out.println(personList);
 
-        Predicate<Person> predicate = Main::test;
+        Predicate<Person> predicate = Person -> Person.getAge() < 18;
         personList.removeIf(predicate);
-
         System.out.println(personList);
-    }
-
-    private static boolean test(Person personList) {
-        return personList.getAge() < 18;
     }
 }
